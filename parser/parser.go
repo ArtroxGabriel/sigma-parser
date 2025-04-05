@@ -191,7 +191,6 @@ func (p *Parser) expectPeek(t token.TokenType) bool {
 }
 
 func (p *Parser) peekTokenIs(t token.TokenType) bool { return p.peekToken.Type == t }
-func (p *Parser) currTokenIs(t token.TokenType) bool { return p.currToken.Type == t }
 
 func (p *Parser) Errors() []string { return p.errors }
 

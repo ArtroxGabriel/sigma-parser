@@ -17,16 +17,6 @@ func New(input string) *Lexer {
 	return l
 }
 
-// peekChar returns the next character in the input without advancing the position.
-// If the end of the input is reached, it returns 0.
-func (l *Lexer) peekChar() byte {
-	if l.readPosition >= len(l.input) {
-		return 0
-	} else {
-		return l.input[l.readPosition]
-	}
-}
-
 // readChar advances the lexer to the next character in the input.
 // If the end of the input is reached, it sets the current character to 0.
 func (l *Lexer) readChar() {
