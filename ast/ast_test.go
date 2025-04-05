@@ -35,7 +35,7 @@ func TestString(t *testing.T) {
 						Right:    &ast.NumberLiteral{Token: token.Token{Type: token.NUMBER, Literal: "3.14"}, Value: 3.14},
 					},
 					Operator: "/",
-					Right:    &ast.Constant{Token: token.Token{Type: token.E, Literal: "e"}, Value: math.E, Name: "e"},
+					Right:    &ast.Constant{Token: token.Token{Type: token.IDENT, Literal: "e"}, Value: math.E, Name: "e"},
 				},
 			},
 		},
@@ -43,7 +43,7 @@ func TestString(t *testing.T) {
 			expectedString: "sin(90)",
 			mathExpression: ast.Function{
 				Expression: &ast.FunctionCall{
-					Token:    token.Token{Type: token.SIN, Literal: "sin"},
+					Token:    token.Token{Type: token.IDENT, Literal: "sin"},
 					Function: &ast.Identifier{Token: token.Token{Type: token.IDENT, Literal: "sin"}, Value: "sin"},
 					Argument: &ast.NumberLiteral{Token: token.Token{Type: token.NUMBER, Literal: "90"}, Value: 90},
 				},
@@ -77,11 +77,11 @@ func TestString(t *testing.T) {
 					Token:    token.Token{Type: token.TIMES, Literal: "*"},
 					Operator: "*",
 					Left: &ast.FunctionCall{
-						Token:    token.Token{Type: token.SQRT, Literal: "sqrt"},
+						Token:    token.Token{Type: token.IDENT, Literal: "sqrt"},
 						Function: &ast.Identifier{Token: token.Token{Type: token.IDENT, Literal: "sqrt"}, Value: "sqrt"},
 						Argument: &ast.NumberLiteral{Token: token.Token{Type: token.NUMBER, Literal: "16"}, Value: 16},
 					},
-					Right: &ast.Constant{Token: token.Token{Type: token.PI, Literal: "pi"}, Value: math.Pi, Name: "pi"},
+					Right: &ast.Constant{Token: token.Token{Type: token.IDENT, Literal: "pi"}, Value: math.Pi, Name: "pi"},
 				},
 			},
 		},
