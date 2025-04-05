@@ -1,9 +1,10 @@
 package lexer_test
 
 import (
-	"function_parser/lexer"
-	"function_parser/token"
 	"testing"
+
+	"github.com/ArtroxGabriel/sigma-parser/lexer"
+	"github.com/ArtroxGabriel/sigma-parser/token"
 )
 
 func TestNextToken_ReadOneToken(t *testing.T) {

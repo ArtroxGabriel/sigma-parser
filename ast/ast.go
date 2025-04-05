@@ -2,7 +2,8 @@ package ast
 
 import (
 	"bytes"
-	"function_parser/token"
+
+	"github.com/ArtroxGabriel/sigma-parser/token"
 )
 
 // Node is the base interface for all AST nodes

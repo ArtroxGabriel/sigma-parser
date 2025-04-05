@@ -1,10 +1,11 @@
 package ast_test
 
 import (
-	"function_parser/ast"
-	"function_parser/token"
 	"math"
 	"testing"
+
+	"github.com/ArtroxGabriel/sigma-parser/ast"
+	"github.com/ArtroxGabriel/sigma-parser/token"
 )
 
 func TestString(t *testing.T) {

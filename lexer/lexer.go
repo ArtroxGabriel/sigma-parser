@@ -1,6 +1,6 @@
 package lexer
 
-import "function_parser/token"
+import "github.com/ArtroxGabriel/sigma-parser/token"
 
 // Lexer represents a lexical analyzer for tokenizing input strings.
 type Lexer struct {

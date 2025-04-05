@@ -2,10 +2,11 @@ package parser
 
 import (
 	"fmt"
-	"function_parser/ast"
-	"function_parser/lexer"
-	"function_parser/token"
 	"strconv"
+
+	"github.com/ArtroxGabriel/sigma-parser/ast"
+	"github.com/ArtroxGabriel/sigma-parser/lexer"
+	"github.com/ArtroxGabriel/sigma-parser/token"
 )
 
 const (
