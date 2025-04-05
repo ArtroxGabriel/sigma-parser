@@ -13,12 +13,11 @@ const (
 	// predefined precedence levels for operators
 	_ int = iota
 	LOWEST
-	SUM      // sum or subtraction (+, -)
-	PRODUCT  // product or division (*, /)
-	POWER    // power or squar root (^, sqrt)
-	PREFIX   // negative numbers (- or + unary)
-	CALL     // call functions(sin, cos, ln, etc.)
-	GROUPING // expression in parentheses ()
+	SUM     // sum or subtraction (+, -)
+	PRODUCT // product or division (*, /)
+	POWER   // power or squar root (^, sqrt)
+	PREFIX  // negative numbers (- or + unary)
+	CALL    // call functions(sin, cos, ln, etc.)
 )
 
 var precedences = map[token.TokenType]int{
@@ -27,7 +26,6 @@ var precedences = map[token.TokenType]int{
 	token.SLASH:  PRODUCT,
 	token.TIMES:  PRODUCT,
 	token.POWER:  POWER,
-	token.SQRT:   POWER,
 	token.LPAREN: CALL,
 }
 
@@ -79,7 +77,7 @@ func (p *Parser) nextToken() {
 	p.peekToken = p.l.NextToken()
 }
 
-func (p *Parser) ParseMathExpression() *ast.Function {
+func (p *Parser) ParseFunction() *ast.Function {
 	mathExpression := new(ast.Function)
 
 	mathExpression.Expression = p.parseExpression(LOWEST)
@@ -90,6 +88,7 @@ func (p *Parser) ParseMathExpression() *ast.Function {
 func (p *Parser) parseExpression(precedence int) ast.Expression {
 	prefix := p.prefixParseFns[p.currToken.Type]
 	if prefix == nil {
+		p.noPrefixParseFnError(p.currToken.Type)
 		return nil
 	}
 
@@ -174,7 +173,12 @@ func (p *Parser) parseExpressionParam(end token.TokenType) ast.Expression {
 	}
 
 	p.nextToken()
-	return p.parseExpression(LOWEST)
+	exp := p.parseExpression(LOWEST)
+
+	if !p.expectPeek(end) {
+		return nil
+	}
+	return exp
 }
 
 func (p *Parser) expectPeek(t token.TokenType) bool {
